@@ -35,8 +35,8 @@
 //   }
 // }
 
-
 import { GoogleGenAI } from "@google/genai";
+
 import { env } from "../config/env.js";
 
 const ai = new GoogleGenAI({
@@ -49,7 +49,9 @@ export async function askAI(
   try {
     const response = await ai.models.generateContent({
       model: "gemini-3.1-flash-lite",
+
       contents: message,
+
       config: {
         systemInstruction: `
 คุณคือ AI Assistant ของ LINE Official Account
@@ -67,12 +69,17 @@ export async function askAI(
     const answer = response.text?.trim();
 
     if (!answer) {
-      throw new Error("Gemini returned empty response");
+      throw new Error(
+        "Gemini returned empty response"
+      );
     }
 
     return answer;
   } catch (error) {
     console.error("Gemini error:", error);
-    throw new Error("AI service failed");
+
+    throw new Error(
+      "AI service failed"
+    );
   }
 }

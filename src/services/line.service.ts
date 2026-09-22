@@ -13,6 +13,7 @@ export async function replyText(
     LINE_REPLY_API,
     {
       replyToken,
+
       messages: [
         {
           type: "text",
@@ -23,7 +24,9 @@ export async function replyText(
     {
       headers: {
         Authorization: `Bearer ${env.line.channelAccessToken}`,
-        "Content-Type": "application/json"
+
+        "Content-Type":
+          "application/json"
       }
     }
   );
